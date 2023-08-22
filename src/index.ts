@@ -20,7 +20,7 @@ import { ParseFn, Parser } from "./types";
  *  type: z.literal('yes'),
  * });
  * 
- * const schemaV3 = schemaV1.extend({
+ * const schemaV3 = schemaV2.extend({
  *  anotherOne: z.literal('no'),
  * });
  * 
@@ -31,13 +31,13 @@ import { ParseFn, Parser } from "./types";
  * ]);
  * 
  * // Type of res1 is { foo: string, bar: number, type: 'yes', anotherOne: 'no' }
- * const res1 = parser.parseLatest('some input');
+ * const res1 = parser.parseLatest(someInput);
  * 
  * // Type of res2 is a union of all versions of the schema.
- * const res2 = parser.parseAny('some input');
+ * const res2 = parser.parseAny(someInput);
  * 
  * // Type of res3 is { foo: string, bar: number, type: 'yes' }
- * const res3 = parser.parseSpecific(1, 'some input');
+ * const res3 = parser.parseSpecific(1, someInput);
  * 
  * // ___________
  * // Additionally, there are a few helpful generics for typing:

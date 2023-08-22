@@ -31,7 +31,7 @@ const schemaV2 = schemaV1.extend({
   type: z.literal('yes'),
 });
 
-const schemaV3 = schemaV1.extend({
+const schemaV3 = schemaV2.extend({
   anotherOne: z.literal('no'),
 });
 
@@ -55,13 +55,13 @@ Once you've created your Versioned Parser, you can start parsing data using thre
 // [...]
 
 // Type of res1 is { foo: string, bar: number, type: 'yes', anotherOne: 'no' }
-const res1 = parser.parseLatest('some input');
+const res1 = parser.parseLatest(someInput);
 
 // Type of res2 is a union of all versions of the schema.
-const res2 = parser.parseAny('some input');
+const res2 = parser.parseAny(someInput);
 
 // Type of res3 is { foo: string, bar: number, type: 'yes' }
-const res3 = parser.parseSpecific(1, 'some input');
+const res3 = parser.parseSpecific(1, someInput);
 ```
 
 As you can see, `parseLatest` always takes the latest version of your parse function, and thus enforces the latest schema. The result of this function is strongly typed according to the return type of the first parse function you passed in your version array.
