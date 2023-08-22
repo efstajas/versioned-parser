@@ -8,13 +8,19 @@ All is well until you add a new feature, and you now need to add additional keys
 
 This is where Versioned Parser comes in.
 
-## Getting started
+## 👋 Getting started
+
+### Install
+
+```sh
+npm install @efstajas/versioned-parser
+```
+
+### ✨ Creating a Versioned Parser
 
 For the examples below, we're going to use `zod` as our data validation tool, but Versioned Parser will work with any parse function that takes a single input parameter, throws an error if the expected schema is not followed, and returns the parsed data.
 
-### Creating a Versioned Parser
-
-For the following example, let's create three versions of a dummy Zod schema, where each adds another mandatory key. When you have your schema versions defined, simply call `createVersionedParser` and pass the versions of your *parse function* (function that takes a single input parameter, throws an error if the expected schema is not followed, and returns the parsed data) in an array as the first argument, where the latest version must be first (index zero), and older versions follow.
+Let's create three versions of a dummy Zod schema, where each adds another mandatory key. When you have your schema versions defined, simply call `createVersionedParser` and pass the versions of your *parse function* (function that takes a single input parameter, throws an error if the expected schema is not followed, and returns the parsed data) in an array as the first argument, where the latest version must be first (index zero), and older versions follow.
 
 ```ts
 import z from 'zod';
@@ -47,7 +53,7 @@ const parser = createVersionedParser([
 ]);
 ```
 
-### Parsing data
+### 🤓 Parsing data
 
 Once you've created your Versioned Parser, you can start parsing data using three functions; `parseLatest`, `parseAny`, or `parseSpecific`. All these functions magically infer the correct type from your array of parse functions:
 
