@@ -1,0 +1,27 @@
+{
+  "name": "@efstajas/versioned-parser",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "A TypeScript-first utility for managing multiple versions of parse functions.",
+  "keywords": [
+    "schema",
+    "validation",
+    "typescript",
+    "zod",
+    "versioning"
+  ],
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/efstajas/versioned-parser.git"
+  },
+  "author": "Georgios Jason Efstathiou",
+  "license": "Apache-2.0",
+  "scripts": {
+    "clean": "rm -rf lib/*",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "typescript": "^5.1.6"
+  }
+}
