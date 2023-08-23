@@ -1,7 +1,6 @@
 {
   "name": "@efstajas/versioned-parser",
-  "version": "0.1.2",
-  "type": "module",
+  "version": "0.1.4",
   "description": "A TypeScript-first utility for managing multiple versions of parse functions.",
   "keywords": [
     "schema",
@@ -11,6 +10,21 @@
     "versioning"
   ],
   "main": "lib/index.js",
+  "module": "./lib/index.mjs",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "require": "./lib/index.js",
+      "import": "./lib/index.mjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "/lib",
+    "/index.d.ts"
+  ],
+  "types": "./index.d.ts",
+  "sideEffects": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/efstajas/versioned-parser.git"
@@ -19,9 +33,16 @@
   "license": "Apache-2.0",
   "scripts": {
     "clean": "rm -rf lib/*",
-    "build": "tsc"
+    "build": "npm run clean && npm run build:cjs && npm run build:esm",
+    "build:esm": "rollup --config ./configs/rollup.config.js --bundleConfigAsCjs",
+    "build:cjs": "tsc -p ./configs/tsconfig.cjs.json",
+    "build:types": "tsc -p ./configs/tsconfig.types.json",
+    "build:test": "tsc -p ./configs/tsconfig.test.json"
   },
   "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.2",
+    "rollup": "^3.28.1",
+    "tslib": "^2.6.2",
     "typescript": "^5.1.6"
   }
 }

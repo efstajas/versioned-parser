@@ -1,12 +1,6 @@
 {
+  "extends": "./configs/tsconfig.base.json",
   "compilerOptions": {
-    "target": "es2018",
-    "module": "es6",
-    "declaration": true,
-    "outDir": "./lib",
-    "strict": true,
-    "moduleResolution": "node",
-  },
-  "include": ["src"],
-  "exclude": ["node_modules", "**/__tests__/*"]
+    "outDir": "./lib"
+  }
 }
